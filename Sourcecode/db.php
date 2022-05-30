@@ -70,7 +70,7 @@
         if(!$stm->execute()){
             return array('code' => 2 , 'error'=> 'Can not execute command');
         }
-		send_activate_email($email,$token);
+		#send_activate_email($email,$token);
 
         return array('code' => 0 , 'error'=> 'Create account successful');
 	}
