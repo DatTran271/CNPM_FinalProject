@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (isset($_SESSION['user'])) {
-        header('Location: index.php');
+        header('Location: admin.php');
         exit();
     }
 ?>
@@ -74,7 +74,7 @@
                 exit();
             }else if (in_array($user, $arrayuser) && in_array($pass, $arraypass) && $arraycheck[$user]==$pass && $arraycheckrole[$user]==2) {
                 // success
-                $_SESSION['user'] = 'student';
+                $_SESSION['user'] =$user;
                 header('Location: home.php');
                 exit();
             }else {
