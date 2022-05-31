@@ -11,7 +11,7 @@
   <style>
   .carousel-inner img {
     width: 100%;
-    height: 970px;
+    height: 900px;
   }
   </style>
 </head>
@@ -49,21 +49,21 @@
         <!-- The slideshow -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-            <img src="./img/billiard-1.jpg" alt="Los Angeles" width="100%" height="400">
+            <img src="./img/billiard1.jpg" width="50%" height="400"/>
             <div class="carousel-caption">
                 <h3>Welcome to our Billiard club</h3>
                 <p>Hope you enjoy</p>
             </div>   
             </div>
             <div class="carousel-item">
-            <img src="./img/billiard-2.jpg" alt="Chicago" width="100%" height="400">
+            <img src="./img/billiard2.jpg" width="100%" height="400"/>
             <div class="carousel-caption">
                 <h3>Welcome to our Billiard club</h3>
                 <p>Hope you enjoy</p>
             </div> 
             </div>
             <div class="carousel-item">
-            <img src="./img/billiard-3.jpg" alt="New York" width="100%" height="400">
+            <img src="./img/billiard3.jpg"  width="100%" height="400"/>
             <div class="carousel-caption">
                 <h3>Welcome to our Billiard club</h3>
                 <p>Hope you enjoy</p>
