@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 05, 2022 lúc 11:19 AM
+-- Thời gian đã tạo: Th6 05, 2022 lúc 04:43 PM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 7.4.29
 
@@ -43,7 +43,8 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`id`, `username`, `password_mk`, `hoten`, `ngaysinh`, `email`, `sdt`, `role_user`) VALUES
-('1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Tuan Dat', '2000-06-06', 'admin@gmail.com', '0', 0);
+('001', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'admin', '2000-04-23', 'admin@gmail.com', '0908999999', 0),
+('51800271', 'tuandat', 'e10adc3949ba59abbe56e057f20f883e', 'Tuan Dat', '0000-00-00', 'thiendat111@gmail.com', '0908809045324', 2);
 
 -- --------------------------------------------------------
 
@@ -56,7 +57,7 @@ CREATE TABLE `bill` (
   `quantity` int(11) NOT NULL,
   `tableID` int(11) NOT NULL,
   `types` varchar(250) NOT NULL,
-  `prices` int(11) NOT NULL,
+  `prices` float NOT NULL,
   `timeToStart` time NOT NULL,
   `timeToEnd` time NOT NULL,
   `customerName` varchar(1024) NOT NULL
@@ -67,7 +68,8 @@ CREATE TABLE `bill` (
 --
 
 INSERT INTO `bill` (`orderID`, `quantity`, `tableID`, `types`, `prices`, `timeToStart`, `timeToEnd`, `customerName`) VALUES
-(845, 8, 996, 'Bida crom', 50000, '14:00:00', '16:00:00', 'tuandat');
+(99, 8, 995, 'Bida crom', 50000, '14:00:00', '16:00:00', 'tuandat'),
+(247, 8, 995, 'Bida pool', 50000, '14:00:00', '16:00:00', 'tuandat');
 
 -- --------------------------------------------------------
 
@@ -87,8 +89,30 @@ CREATE TABLE `billiards` (
 --
 
 INSERT INTO `billiards` (`tableID`, `numbers`, `types`, `prices`) VALUES
-(672, 1, 'Bida crom', 50000),
-(996, 1, 'Bida crom', 50000);
+(995, 1, '4 types', 50000);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `employee`
+--
+
+CREATE TABLE `employee` (
+  `employeeID` varchar(100) NOT NULL,
+  `employeeName` varchar(1024) NOT NULL,
+  `email` varchar(1024) NOT NULL,
+  `birthDate` date NOT NULL,
+  `phone` varchar(100) NOT NULL,
+  `salary` float NOT NULL,
+  `position` varchar(1024) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `employee`
+--
+
+INSERT INTO `employee` (`employeeID`, `employeeName`, `email`, `birthDate`, `phone`, `salary`, `position`) VALUES
+('783', 'employee1', 'employee@gmail.com', '2002-02-20', '090809090909', 1500000, 'Manager');
 
 -- --------------------------------------------------------
 
@@ -132,6 +156,12 @@ ALTER TABLE `bill`
 --
 ALTER TABLE `billiards`
   ADD PRIMARY KEY (`tableID`);
+
+--
+-- Chỉ mục cho bảng `employee`
+--
+ALTER TABLE `employee`
+  ADD PRIMARY KEY (`employeeID`);
 
 --
 -- Chỉ mục cho bảng `typeofbilliards`
