@@ -1,17 +1,20 @@
 <?php
 	$id = $_GET['id'];
-	$truyvan_up = "SELECT * FROM `billiards` where tableID = $id";
+	$truyvan_up = "SELECT * FROM `employee` where employeeID = $id";
 	$data_up = mysqli_query($ketnoi, $truyvan_up);
 	$row_up = mysqli_fetch_assoc($data_up);
 
-	if(isset($_POST['ed-table'])){
-		$numbers = $_POST['numbers'];
-		$types = $_POST['types'];
-		$prices = $_POST['prices'];
+	if(isset($_POST['sbm'])){
+		$employeeName = $_POST['employeeName'];
+		$email = $_POST['email'];
+		$birthDate = $_POST['birthDate'];
+		$phone = $_POST['phone'];
+		$salary = $_POST['salary'];
+		$position = $_POST['position'];
 		
-		$truyvan = "UPDATE billiards SET numbers = '$numbers', types = '$types', prices = '$prices' where tableID = $id";
+		$truyvan = "UPDATE employee SET employeeName = '$employeeName', email = '$email', birthDate = '$birthDate', phone = '$phone', salary = '$salary', position = '$position' where employeeID = $id";
 		$data = mysqli_query($ketnoi, $truyvan);
-		header('location: admin.php');
+		header('location: employee.php');
 	}
 ?>
 <!DOCTYPE html>
@@ -71,43 +74,32 @@
 		<div class="card-body">
 			<form method="POST" enctype="multipart/form-data">
 				<div class="form-group">
-					<label>Number</label>
-					<input type="text" name="numbers" class="form-control" required value="<?php echo $row_up['numbers'];?>">
+					<label>Name</label>
+					<input type="text" name="employeeName" class="form-control" required value="<?php echo $row_up['employeeName'];?>">
 				</div>
 				<div class="form-group">
-                    <label for="">Types</label>
-                    <select name="types" class="custom-select mb-3">
-                        <?php
-                            $host = "localhost";
-                            $user = "root";
-                            $pass = "";
-                            $database = "database";
-                            $ketnoi = new mysqli($host,$user,$pass,$database);
-                            mysqli_set_charset($ketnoi,"utf8");
-                            if($ketnoi->connect_error){
-                                die("".$ketnoi->connect_error);
-                            }else{
-                                echo "";
-                            }
-                                                
-                            $truyvan = "SELECT types  FROM `typeofbilliards`";
-                            $data = mysqli_query($ketnoi,$truyvan);
-                                                
-                            while($row = mysqli_fetch_assoc($data)){
-                                
-                        ?>
-                            <option value="<?php echo $row["types"]; ?>"><?php echo $row["types"]; ?></option>
-                        <?php
-                            }
-                        ?>
-                    </select>
-                </div>
+					<label>Birth</label>
+					<input type="date" name="birthDate" class="form-control" required value="<?php echo $row_up['birthDate'];?>">
+				</div>
 				<div class="form-group">
-					<label>Prices</label>
-					<input type="text" name="prices" class="form-control" required value="<?php echo $row_up['prices'];?>">
+					<label>email</label>
+					<input type="text" name="email" class="form-control" required value="<?php echo $row_up['email'];?>">
+				</div>
+				<div class="form-group">
+					<label>Phone</label>
+					<input type="text" name="phone" class="form-control" required value="<?php echo $row_up['phone'];?>">
+				</div>
+				<div class="form-group">
+					<label>Salary</label>
+					<input type="text" name="salary" class="form-control" required value="<?php echo $row_up['salary'];?>">
+				</div>
+				<div class="form-group">
+					<label>Position</label>
+					<input type="text" name="position" class="form-control" required value="<?php echo $row_up['position'];?>">
 				</div>
 				
-				<button name="ed-table" class="btn btn-success" type="submit">Update</button>
+				
+				<button name="sbm" class="btn btn-success" type="submit">Update</button>
 			</form>
 		</div>
 	</div>

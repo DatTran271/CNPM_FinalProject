@@ -21,6 +21,9 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                    <a class="nav-link" href="employee.php">Employee management</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="customer.php">Customer management</a>
                 </li>
 				<li class="nav-item">
@@ -76,7 +79,7 @@
 						</tr>
 						<tr>
 							<th style="margin:auto">Price</th>
-							<td style="margin:auto"><?php echo "".$row["prices"]; ?></td>
+							<td style="margin:auto">50000</td>
 						</tr>
 						<tr>
 							<th style="margin:auto">Start at</th>

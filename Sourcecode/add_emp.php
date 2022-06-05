@@ -1,26 +1,29 @@
 <?php
-	if(isset($_POST['add-table'])){
-		$numbers = $_POST['numbers'];
-		$types = $_POST['types'];
-		$prices = $_POST['prices'];
-
-		$takeid = "SELECT tableID FROM billiards";
+	if(isset($_POST['sbm'])){
+		$employeeName = $_POST['employeeName'];
+		$email = $_POST['email'];
+		$birthDate = $_POST['birthDate'];
+		$phone = $_POST['phone'];
+		$salary = $_POST['salary'];
+		$position = $_POST['position'];
+			
+		
+		$takeid = "SELECT employeeID FROM employee";
         $takedata = mysqli_query($ketnoi, $takeid);
         $dem=0;
         while($take_up = mysqli_fetch_assoc($takedata)){
-			$arrayid[$dem]=$take_up["tableID"];
+			$arrayid[$dem]=$take_up["employeeID"];
 			$dem++;
         }
 
-		$tableID = mt_rand(1, 999);
-        while(in_array($tableID, $arrayid)){
-            $tableID = mt_rand(1, 9999);
+		$employeeID = mt_rand(1, 999);
+        while(in_array($employeeID, $arrayid)){
+            $employeeID = mt_rand(1, 999);
         }
 
-		$truyvan = "INSERT INTO billiards (tableID, numbers, types, prices) VALUES
-		 ('$tableID', '$numbers', '$types', '$prices')";
+		$truyvan = "INSERT INTO employee (employeeID, employeeName, email, birthDate, phone, salary, position) VALUES ('$employeeID', '$employeeName', '$email', '$birthDate', '$phone','$salary','$position')";
 		$data = mysqli_query($ketnoi, $truyvan);
-		header('location: admin.php');
+		header('location: employee.php');
 	}
 ?>
 <!DOCTYPE html>
@@ -79,43 +82,32 @@
 		<div class="card-body">
 			<form method="POST" enctype="multipart/form-data">
 				<div class="form-group">
-					<label>Numbers</label>
-					<input type="text" name="numbers" class="form-control" required>
+					<label>Name</label>
+					<input type="text" name="employeeName" class="form-control" required>
 				</div>
 				<div class="form-group">
-                    <label for="">Types</label>
-                    <select name="types" class="custom-select mb-3">
-                        <?php
-                            $host = "localhost";
-                            $user = "root";
-                            $pass = "";
-                            $database = "database";
-                            $ketnoi = new mysqli($host,$user,$pass,$database);
-                            mysqli_set_charset($ketnoi,"utf8");
-                            if($ketnoi->connect_error){
-                                die("".$ketnoi->connect_error);
-                            }else{
-                                echo "";
-                            }
-                                                
-                            $truyvan = "SELECT types  FROM `typeofbilliards`";
-                            $data = mysqli_query($ketnoi,$truyvan);
-                                                
-                            while($row = mysqli_fetch_assoc($data)){
-                                
-                        ?>
-                            <option value="<?php echo $row["types"]; ?>"><?php echo $row["types"]; ?></option>
-                        <?php
-                            }
-                        ?>
-                    </select>
-                </div>
+					<label>Birth</label>
+					<input type="date" name="birthDate" class="form-control" required>
+				</div>
 				<div class="form-group">
-					<label>Prices</label>
-					<input type="text" name="prices" class="form-control" required>
+					<label>Email</label>
+					<input type="text" name="email" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label>Phone</label>
+					<input type="text" name="phone" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label>Salary</label>
+					<input type="text" name="salary" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label>Position</label>
+					<input type="text" name="position" class="form-control" required>
 				</div>
 				
-				<button name="add-table" class="btn btn-success" type="submit">Add</button>
+				
+				<button name="sbm" class="btn btn-success" type="submit">Add</button>
 			</form>
 		</div>
 	</div>

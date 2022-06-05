@@ -21,7 +21,7 @@
 
     if(isset($_POST['email'])){
         $email = $_POST['email'];
-        if (!empty($email)) {
+        if (empty($email)) {
             $error = 'Please enter your email';
         }
         else if (filter_var($email, FILTER_VALIDATE_EMAIL) == false) {

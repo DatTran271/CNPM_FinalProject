@@ -140,7 +140,7 @@
                 </div>
 				<div class="form-group">
 					<label>Prices</label>
-					<input type="text" name="prices" class="form-control" value="50000" />
+					<input type="text" name="prices" class="form-control" value="50000" required />
 				</div>
 				<div class="form-group">
 					<label>Start at</label>
